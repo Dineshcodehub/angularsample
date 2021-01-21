@@ -1,0 +1,61 @@
+Angular Installation Commands
+
+<h5>Bootstrap & Design :</h5>
+
+<p>npm install --save bootstrap jquery </p>
+
+<p>npm install popper.js --save </p>
+
+<p>npm install @fortawesome/fontawesome-free </p>
+
+<p>npm install --save classlist.js </p>
+
+<p>npm install --save web-animations-js </p>
+ 
+<p>npm install datatables.net --save </p>
+
+<p>npm install datatables.net-dt --save </p>
+
+<p>npm datatables.net-buttons --save </p>
+
+<p>datatables.net-buttons-dt --save </p>
+
+<p>npm install angular-datatables --save </p>
+
+<p>npm install @types/jquery --save-dev </p>
+
+<p>npm install @types/datatables.net --save-dev </p>
+
+<p>npm install --save sweetalert2 </p>
+
+<p>npm install --save zone.js </p>
+
+<p>npm install jwt-decode --save </p>
+
+<p>npm install ngx-spinner --save </p>
+
+<h5>Componenets & Services :</h5>
+
+<p>ng g s Employee --spec=false  </p>
+
+<p>ng g c contact --skipTests=true </p>
+ 
+<p>ng generate service service/authentication </p>
+
+<p>ng generate service security/auth-guard </p>
+
+<h5>Date Picker :</h5>
+<p>npm install ngx-bootstrap --save</p>
+<p>Date Picker URL is: <a href="https://valor-software.com/ngx-bootstrap/#/datepicker" target="_blank"> https://valor-software.com/ngx-bootstrap/#/datepicker </a></p>
+<p>Select current date URL is : <a href="https://stackblitz.com/edit/ngx-bootstrap-datepicker-taconz" target="_blank">https://stackblitz.com/edit/ngx-bootstrap-datepicker-taconz</a></p>
+<h5>Common Commands :</h5>
+
+<p>ng --version </p>
+
+<p>npm cache clean </p>
+ 
+<h5>Build Project :</h5>
+
+<p>ng build --prod --baseHref=. --outputPath CDCAM </p>
+
+<p>ng build --prod --baseHref=. --outputPath D:\apache-tomcat-9.0.30\webapps\CDCAM </p>
