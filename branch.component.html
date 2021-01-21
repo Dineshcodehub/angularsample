@@ -1,0 +1,231 @@
+<div class="container-fluid">
+
+    <div class="row">
+
+        <div class="col-md-12">
+
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    <p><b>List of Branches</b></p>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <p class="text-right">Dashboard > Master > <b>Branch Master</b></p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-12">
+
+            <div class="content">
+
+                <p><b>{{title}}</b></p>
+
+                <hr>
+                <form [formGroup]="formDeatils" #ngForm="ngForm" *ngIf="form" (ngSubmit)="save()">
+
+                    <div class="row">
+
+                        <div class="col-md-3">
+
+                            <div class="form-group">
+                                <label>Branch Code</label>
+                                <input type="text" class="form-control" [readonly]="readOnly"
+                                    formControlName="branchCode" placeholder="">
+                                <div *ngIf="ngForm.submitted">
+                                    <div class="alert alert-danger" *ngIf="validate_form.branchCode.errors?.required">
+                                        Branch Code is required</div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-3">
+
+                            <div class="form-group">
+                                <label>Branch Name</label>
+                                <input type="text" class="form-control" formControlName="branchName" placeholder="">
+                                <div *ngIf="ngForm.submitted">
+                                    <div class="alert alert-danger" *ngIf="validate_form.branchName.errors?.required">
+                                        Branch Name is required</div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-3">
+
+                            <div class="form-group">
+                                <label>Parent Branch Code</label>
+                                <input type="text" class="form-control" formControlName="parentBranchCode"
+                                    placeholder="">
+                                <div *ngIf="ngForm.submitted">
+                                    <div class="alert alert-danger"
+                                        *ngIf="validate_form.parentBranchCode.errors?.required">
+                                        Parent Branch is required</div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-3">
+
+                            <div class="form-group" *ngIf="formDeatils.get('action').value != 'NEW'">
+                                <label>Status</label>
+                                <select class="form-control" formControlName="status">
+                                    <option value="ACTIVE">ACTIVE</option>
+                                    <option value="IN ACTIVE">IN ACTIVE</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="row justify-content-center">
+
+                        <button type="button" (click)="showGrid()" class="btn btn-primary btn-reset">Back</button>&nbsp;
+                        <button type="submit" class="btn btn-primary bg-blue">Save</button>
+
+                    </div>
+
+                </form>
+
+                <div class="row" *ngIf="tableGrid">
+
+
+                    <div class="col-md-12">
+
+                        <form [formGroup]="branchSearchForm" (ngSubmit)="searchBranch()">
+
+                            <div class="col-md-12 form_filter">
+
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label>Branch Code</label>
+                                            <select class="form-control" formControlName="branchCode">
+                                                <option>Choose</option>
+                                                <option *ngFor="let item of branchList">{{item.branchCode}} </option>
+                                            </select>
+                                            <!-- <input type="text" class="form-control" formControlName="empId"
+                                                placeholder=""> -->
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label>Branch Name</label>
+                                            <input type="text" class="form-control" formControlName="branchName"
+                                                placeholder="">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label>Parent Branch Code</label>
+                                            <select class="form-control" formControlName="parentBranchCode">
+                                                <option>Choose</option>
+                                                <option *ngFor="let item of branchList">{{item.parentBranchCode}}
+                                                </option>
+                                            </select>
+                                            <!-- <input type="text" class="form-control" formControlName="branchName"
+                                                placeholder=""> -->
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="col-md-1">
+                                        <div class="form-group">
+                                            <label>Status</label>
+                                            <select class="form-control" formControlName="status">
+                                                <option value="ACTIVE">ACTIVE</option>
+                                                <option value="IN ACTIVE">IN ACTIVE</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label class="d-block">&nbsp;</label>
+                                            <i (click)="searchBranch()"
+                                                class="fa fa-filter form_filter_search_icon cursor_icon"
+                                                aria-hidden="true"></i>
+                                            <i (click)="searchBranchReset()"
+                                                class="fa fa-refresh form_filter_reset_icon cursor_icon"
+                                                aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label class="d-block">&nbsp;</label>
+                                        <button type="button" (click)="showForm()" class="btn btn-success btn-block">Add
+                                            New Branch</button>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                        </form>
+
+                    </div>
+
+
+                </div>
+
+                <!-- <div class="row" *ngIf="tableGrid">
+                    <div class="col-md-12">
+                        <div class="text-right">
+                            <button type="button" (click)="showForm()" class="btn btn-success">Add New
+                                Branch</button><br><br>
+                        </div>
+                    </div>
+                </div> -->
+
+                <div class="table-responsive" *ngIf="tableGrid">
+
+                    <br>
+                    <table datatable class="mytable table table-bordered table-striped">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>S No.</th>
+                                <th>Branch Code</th>
+                                <th>Branch Name</th>
+                                <th>Parent Branch Code</th>
+                                <th>Status</th>
+                                <th class="text-center">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of tableGridData; let i=index;">
+                                <td>{{item.id}}</td>
+                                <td>{{item.branchCode}}</td>
+                                <td>{{item.branchName}}</td>
+                                <td>{{item.parentBranchCode}}</td>
+                                <td>{{item.status}}</td>
+                                <td class="text-center"><i (click)="editBranch(item)"
+                                        class="fa fa-pencil-square-o edit_icon" aria-hidden="true"></i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
