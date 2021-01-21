@@ -1,0 +1,62 @@
+<div class="container-fluid bg-white">
+
+    <div class="col-md-12">
+
+        <div class="row">
+
+            <div class="col-md-9">
+                <img src="assets/images/logo.png" class="logo" /><br><br>
+
+                <h3>LETS GET CONNECTED ACROSS THE GLOBE.</h3>
+
+                <img src="assets/images/login_bg.jpg" class="w-100 img-responsive login_bg" />
+
+            </div>
+
+            <div class="col-md-3">
+
+                <div class="row vh-100 text-center justify-content-center align-items-center bg-login-form">
+
+                    <div class="col-md-12">
+
+                        <h4 class="text-white">LOGIN</h4>
+
+                        <p class="text-white">Log in to continue to our Application</p>
+
+                        <form [formGroup]="loginForm" #ngForm="ngForm" (ngSubmit)="login()">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fa fa-user" aria-hidden="true"></i></span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="Username"
+                                    formControlName="username">
+                            </div>
+                            <div *ngIf="ngForm.submitted">
+                                <div class="alert alert-danger" *ngIf="login_form_validate.username.errors?.required">
+                                    User
+                                    Name is required</div>
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fa fa-lock" aria-hidden="true"></i></span>
+                                </div>
+                                <input type="password" class="form-control" placeholder="Password"
+                                    formControlName="password">
+                            </div>
+                            <div *ngIf="ngForm.submitted">
+                                <div class="alert alert-danger" *ngIf="login_form_validate.password.errors?.required">
+                                    Password is
+                                    required</div>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block bg-blue">Login</button>
+                        </form>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
