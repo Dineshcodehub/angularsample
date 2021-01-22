@@ -1,0 +1,52 @@
+<form [formGroup]="appForm">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="From Date" style="border: 1px solid #4f8dc5;"
+                                        formControlName="fromDate" bsDatepicker [bsConfig]="{ isAnimated: true }" 
+                                         ngModel (ngModelChange)="setmindate($event)"
+                                        [ngClass]="{ 'is-invalid': submitted && f.fromDate.errors }" name="fromDate" />
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" 
+                                    ngModel  bsDatepicker [minDate]="startDate" 
+                                     [bsConfig]="{ isAnimated: true }"
+                                    style="border: 1px solid #4f8dc5;"
+                                    formControlName="toDate" name="toDate"
+                                        [ngClass]="{ 'is-invalid': submitted && f.toDate.errors }"
+                                        placeholder="To Date" />
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <select type="date" class="form-control"
+                                    style="border: 1px solid #4f8dc5;"
+                                        [ngClass]="{ 'is-invalid': submitted && f.status.errors }"
+                                        formControlName="status" name="status">
+                                        <option value="">----select----</option>
+                                        <option value="Failed">Failed</option>
+                                        <option value="Completed">Completed</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <button type="submit" (click)="getdatabydate(appForm.value)"
+                                        style="background-color: #05447d;border: none;"
+                                        class="btn btn-block  btn-primary">Search</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+setmindate(val){
+    this.startDate.setDate(val.getDate());
+    console.log(this.startDate);
+  }
+  <!-- Inside of constructor{}  -!>
+  
+this.startDate = new Date();
+    this.endDate = new Date();
+    this.startDate.setDate(this.startDate.getDate());
+    console.log(this.startDate);
