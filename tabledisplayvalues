@@ -1,0 +1,8 @@
+<td>
+                                <span *ngIf="x.status == 'SUCCESS'"
+                                    class="badge badge-light-success p-2">{{x.status}}</span>
+                                <span *ngIf="x.status == 'PENDING'"
+                                    class="badge badge-light-warning p-2">{{x.status}}</span>
+                                <span *ngIf="x.status == 'FAILURE'"
+                                    class="badge badge-light-danger p-2">{{x.status}}</span>
+                            </td>
